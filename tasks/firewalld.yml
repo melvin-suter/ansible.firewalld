@@ -21,9 +21,9 @@
       state: enabled
     with_items: "{{ firewalld_open_ports }}"
 
-- name: Restart Firewalld
-  service:
-    name: firewalld
-    state: restarted
-    enabled: true
+  - name: Restart Firewalld
+    service:
+      name: firewalld
+      state: restarted
+      enabled: true
 ...
