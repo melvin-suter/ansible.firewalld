@@ -1,0 +1,3 @@
+---
+# --- firewalld ---
+firewalld_yum_package: "firewalld"

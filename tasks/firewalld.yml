@@ -1,0 +1,29 @@
+---
+  - name: Install Firewalld
+    yum:
+      name: "{{ firewalld_yum_package }}"
+      state: present
+
+
+  - name: Set interface zones
+    firewalld:
+      zone: "{{ item.zone }}"
+      interface: "{{ item.name }}"
+      permanent: yes
+      state: "{{ item.state }}"
+    with_items: "{{ firewalld_interfaces }}"
+
+  - name: Open Firewall Ports
+    firewalld:
+      zone: "{{ item.zone }}"
+      port: "{{ item.port }}/{{ item.protocol }}"
+      permanent: yes
+      state: enabled
+    with_items: "{{ firewalld_open_ports }}"
+
+- name: Restart Firewalld
+  service:
+    name: firewalld
+    state: restarted
+    enabled: true
+...

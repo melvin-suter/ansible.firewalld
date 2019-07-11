@@ -1,2 +1,2 @@
-# ansible.firewalld
-Ansible Firewalld Management
+# ansible.hetzner-network
+Ansible role to configure hetzner private network
